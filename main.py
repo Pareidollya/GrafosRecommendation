@@ -54,7 +54,9 @@ def topFilmes(filmes,userFilmes,userId): #teste
 
 
 grafoU = grafoUser(ratings)
-print(grafoU[611]) #user 611 adicionado como teste ao arquivo
+
+usuario = int(input("Id do usuário [1 - 611]: "))
+print(f"Informações o usuário: {usuario}\n['filme',nota]\n{grafoU[usuario]}") #user 611 adicionado como teste ao arquivo
 
 print("top10")
 
