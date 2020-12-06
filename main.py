@@ -3,13 +3,23 @@ import pandas as pd
 filmes = pd.read_csv("dados/movies.csv", sep=",")
 ratings = pd.read_csv("dados/ratings.csv", sep=",")
 
-def grafoUser(ratings):
+def grafoUser(ratings): #usuarios (filmes e nota) em lista de adjacencia
+    uId = ratings["userId"]
+    uFilmes = ratings["movieId"]
+    uScore = ratings["rating"]
     grafo = {}
-    for i in ratings["userId"]:
-        grafo[i] = []
+    for a in ratings["userId"]: #criar vertices
+        grafo[a] = []
+    x = 0
+
+    for b in uId: #adicionar adjacencia aos vertices: filmes, valor(nota)
+        grafo[b].append(f"{uFilmes[x]}") #adicionar filmes como String
+        #grafo[b].append(uFilmes[x]) #adicionar filmes e notas como inteiro
+        grafo[b].append(uScore[x]) #nota como inteiro ou float
+        x += 1
     return grafo
 
-def grafoFilmes(filmes,userFilmes,userId):
+def grafoFilmes(filmes,userFilmes,userId): #irei remover, foi so pra testar
     grafo = {}
     for i in filmes["movieId"]:  # montar o grafo adicionando vertices: filmes
         grafo[i] = []
@@ -42,20 +52,12 @@ def topFilmes(filmes,userFilmes,userId): #teste
     print("terminou o vetor")
     return top10
 
-print(ratings["userId"])
 
-userFilmes = ratings["movieId"]
-userId = ratings["userId"]
-
-print("passou ")
-
-print("sun")
-
-print("\nnovo grafo ai\n")
-#print(grafoFilmes(filmes,userFilmes,userId))
+grafoU = grafoUser(ratings)
+print(grafoU[611]) #user 611 adicionado como teste ao arquivo
 
 print("top10")
-print(topFilmes(filmes,userFilmes,userId))
+
 
 
 #print(len(topFilmes(filmes,userFilmes,userId)))
