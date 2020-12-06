@@ -32,4 +32,5 @@ print("passou ")
 
 print("sun")
 print(grafoUser(ratings))
+print("\nnovo grafo ai\n")
 print(grafoFilmes(filmes,userFilmes,userId))
