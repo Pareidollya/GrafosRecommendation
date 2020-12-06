@@ -21,6 +21,7 @@ for j in filmes["movieId"]: #adicionar arestas "userId" aos filmes, usuarios que
             grafo[j].append(userId[f])
         f += 1
     f = 0
+    
 print("sun")
 print(grafo)
 
