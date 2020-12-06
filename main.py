@@ -1,34 +1,27 @@
 import pandas as pd
-import numpy as np
 
-FILMES = pd.read_csv("dados/movies.csv", usecols=["movieId","title"],sep=",")
-ratings = pd.read_csv("dados/ratings.csv", usecols=['userId','movieId','rating'],sep=",")
-#tags = pd.read_csv("dados/tags.csv", usecols=['userId','movieId'])
+filmes = pd.read_csv("dados/movies.csv",sep=",")
+ratings = pd.read_csv("dados/ratings.csv",sep=",")
 
-filmeId = FILMES["movieId"].values#vertice
+print(ratings["userId"])
 
-UserId = ratings["userId"].values
-UserFilmes = ratings["movieId"].values
+userFilmes= ratings["movieId"]
+userId = ratings["userId"]
+print(userId[10])
 
 grafo = {}
-for i in filmeId: #
+for i in filmes["movieId"]: #
     grafo[i] = []
-
 print("passou ")
-
-for j in filmeId:
-
-    for k in UserFilmes:
+f = 0
+for j in filmes["movieId"]:
+    for k in userFilmes:
         if k == j:
-            grafo[j].append(k)
-    j += 1
-
+            grafo[j].append(userId[f])
+        f += 1
+    f = 0
 print("sun")
-
-
-
-
-
+print(grafo)
 
 
 
