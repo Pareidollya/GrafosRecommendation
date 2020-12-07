@@ -1,6 +1,8 @@
 # GrafosRecommendation
 Sistema de recomendação utilizando grafos em linguagem python.
+
 Grafo Usuário representado por Lista de adjacência.
+
 Filmes como Dicinoário para utilizar como informações de saída.
 
 Para a execução do programa:
