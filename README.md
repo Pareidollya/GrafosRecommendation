@@ -1,7 +1,7 @@
 # GrafosRecommendation
 Sistema de recomendação utilizando grafos em linguagem python.
 
-Biiblioteca PandasDB para leitura dos dados em excel
+Biblioteca PandasDB para leitura dos dados em excel (necessário ter instalado).
 
 Grafo de Usuários representado por Lista de adjacência. Onde armazena-se movieId e sua nota como valor de aresta.
 
