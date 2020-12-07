@@ -40,26 +40,29 @@ def grafoFilmes(filmes,ratings): #remover, foi so pra testar o trava zap
 
 ################################################ testes
 grafoU = grafoUser(ratings)
-print(len(grafoU[1]))
+
 print(len(grafoU[611]))
 print(grafoU[611][0][0]) #usuario 611, lista 0, posição 0 😎
 print(grafoU[611][1])
 print(grafoU[611][2])
 
-assistido =1111111111
+assistido = 240
 nota = 4
 top = []
 
-for v in grafoU: #recomendação
-    if grafoU[v][0][0] == assistido and grafoU[v][0][1] >= 3: #filme e nota (assistiram e gostaram do filme)
-        print("ae achou o filme heim ")
-        aux = 0
-        for f in grafoU[v]:
-            if grafoU[v][aux][1] > 3 and grafoU[v][aux] != assistido:
-                top.append(grafoU[v][aux])
-            aux += 1
+print(grafoU[1][0].index(1))
 
-print(f"Qm viu tb gostou: {top}")
+for v in grafoU:  # recomendação
+    for A in range(len(grafoU[v]) - 1):
+        if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
+           for B in range(len(grafoU[v])):
+               if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido:
+                   top.append(grafoU[v][B])
+
+
+print(top)
+
+#print(f"Qm viu {assistido} tb gostou: {top[0:10]}")
 
 
 ## teste busca de informações
