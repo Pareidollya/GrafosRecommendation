@@ -51,21 +51,23 @@ print(grafoU[611][0][0]) #usuario 611, lista 0, posição 0 😎
 print(grafoU[611][1])
 print(grafoU[611][2])
 
-assistido = 240
+assistido = 1111111111
 nota = 4
 top = []
-
-print(grafoU[1][0].index(1))
 
 if nota > 3:
     for v in grafoU:  # recomendação
         for A in range(len(grafoU[v]) - 1):
             if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
                 for B in range(len(grafoU[v])):
-                    if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido and grafoF[grafoU[v][B][0]][1][0:2] in grafoF[assistido][1]:
+                    if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1]:
+                        print(grafoF[grafoU[v][B][0]][1])
                         top.append(grafoU[v][B])
+
                 break
-print(top)
+print(f"\nRECOMENDADO:")
+for iae in range(len(top)):
+    print(f"{grafoF[top[iae][0]]}, nota: {top[iae][1]}")
 
 #print(f"Qm viu {assistido} tb gostou: {top[0:10]}")
 
