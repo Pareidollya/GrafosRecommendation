@@ -22,24 +22,29 @@ def grafoUser(ratings): #linked list
     print("a mimir")
     return grafo
 
-def grafoFilmes(filmes,ratings): #remover, foi so pra testar o trava zap
-    userId = ratings["userId"]
-    userFilmes = ratings["movieId"]
+def grafoFilmes(filmes): #remover, foi so pra testar o trava zap
+    print("a buildar dnv")
+    fId = filmes["movieId"]
+    tFilmes = filmes["title"]
+    gFilmes = filmes["genres"]
     grafo = {}
-    for i in filmes["movieId"]:  # montar o grafo adicionando vertices: filmes
-        grafo[i] = []
+    for a in fId:  # montar o grafo adicionando vertices: filmes
+        grafo[a] = []
     f = 0
-    for j in filmes["movieId"]:  # adicionar arestas "userId" aos filmes, usuarios que assitiram au filme x (isso leva uns 7 minutoskkkkkkkkkkkkkkkkk)
-        for k in userFilmes:
-            if k == j:
-                grafo[j].append(userId[f])
-            f += 1
-        f = 0
+    for b in fId:  # adicionar arestas "userId" aos filmes, usuarios que assitiram au filme x (isso leva uns 7 minutoskkkkkkkkkkkkkkkkk)
+        grafo[b].append(tFilmes[f])
+        grafo[b].append(gFilmes[f])
+        f+= 1
+
     print("\nPronto!")##
     return grafo
 
 ################################################ testes
 grafoU = grafoUser(ratings)
+grafoF = grafoFilmes(filmes)
+
+print("Ad" in grafoF[1][1])
+print("Ad" in filmes["genres"][1][0:2])
 
 print(len(grafoU[611]))
 print(grafoU[611][0][0]) #usuario 611, lista 0, posição 0 😎
@@ -57,7 +62,7 @@ if nota > 3:
         for A in range(len(grafoU[v]) - 1):
             if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
                 for B in range(len(grafoU[v])):
-                    if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido:
+                    if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido and grafoF[grafoU[v][B][0]][1][0:2] in grafoF[assistido][1]:
                         top.append(grafoU[v][B])
                 break
 print(top)
