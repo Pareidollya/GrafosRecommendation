@@ -40,5 +40,14 @@ def grafoFilmes(filmes,ratings): #remover, foi so pra testar
 
 ################################################
 grafoU = grafoUser(ratings)
+print(len(grafoU[1]))
+print(len(grafoU[611]))
+print(grafoU[611][0])
+print(grafoU[611][1])
+print(grafoU[611][2])
+
+usuario = int(input("Id do usuário [1 - 612]: "))
+print(f"Informações o usuário: {usuario} - {len(grafoU[usuario])} Filmes vistos. \n['filme',nota]\n{grafoU[usuario]}") #user 611 adicionado como teste ao arquiv
+
 
 
