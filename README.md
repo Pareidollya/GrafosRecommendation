@@ -24,6 +24,6 @@ Observações:
 
 • O codigo funciona em execução única, ou seja, mostra a recomendação com base em um único filme visto. 
 
-• Caso o filme visto não tenha sido muito assistido ou bem avaliado impossibilita a recomendação.
+• Caso o filme visto não tenha sido muito assistido ou bem avaliado pode impossibilitar a recomendação.
 
 • movieId pode ser encontrado em movies.csv (foi adicionado novos filmes afim de testes).
