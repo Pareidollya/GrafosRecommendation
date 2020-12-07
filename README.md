@@ -1,16 +1,16 @@
 # GrafosRecommendation
 Sistema de recomendação utilizando grafos em linguagem python.
 
-Grafo Usuário representado por Lista de adjacência.
+Grafo de Usuários representado por Lista de adjacência. Onde armazena-se movieId e sua nota como valor de aresta.
 
-Filmes como Dicinoário para utilizar como informações de saída.
+Dicionario Filmes para utilizar como informações de saída.
 
 Para a execução do programa:
 
-* Fazer download do projeto;
-* Executar main.py;
-* Inserir o filme assistido pelo seu movieId; 
-* Inserir sua nota 0 - 5 (por enquanto so funcionar acima de 3);
+> Fazer download do projeto;
+> Executar main.py;
+> Inserir o filme assistido pelo seu movieId; 
+> Inserir sua nota 0 - 5 (por enquanto so funcionar acima de 3);
 
 > O retorno será uma lista de no maximo 20 filmes do mesmo gênero que foram bem avaliados por outros usuários.
 
