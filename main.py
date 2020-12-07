@@ -9,7 +9,6 @@ def grafoUser(ratings): #linked list
     uFilmes = ratings["movieId"]
     uScore = ratings["rating"]
     grafo = {}
-
     for a in ratings["userId"]: #criar vertices
         grafo[a] = []
     x = 0
@@ -35,46 +34,44 @@ def grafoFilmes(filmes): #remover, foi so pra testar o trava zap
         grafo[b].append(tFilmes[f])
         grafo[b].append(gFilmes[f])
         f+= 1
-
     print("\nPronto!")##
     return grafo
 
-################################################ testes
-grafoU = grafoUser(ratings)
-grafoF = grafoFilmes(filmes)
+def limpar(a): #remover filmes repitidos
+    top = a
+    i = 0
+    while i < len(top):
+        j = i + 1
+        while j < len(top):
+            if top[j][0] == top[i][0]:
+                del(top[j])
+            else:
+                j += 1
+        i += 1
+    return top
 
-print("Ad" in grafoF[1][1])
-print("Ad" in filmes["genres"][1][0:2])
+################################################ testes de run
+grafoU = grafoUser(ratings) #grafo de usuarios
+grafoF = grafoFilmes(filmes) #dicionario (ta como grafo mas dps percebi q nao é)
 
-print(len(grafoU[611]))
-print(grafoU[611][0][0]) #usuario 611, lista 0, posição 0 😎
-print(grafoU[611][1])
-print(grafoU[611][2])
-
-assistido = 1111111111
-nota = 4
+assistido = int(input("Id do filme: ")) #adicionar busca por nome
+nota = float(input("Nota do filme: "))
 top = []
-
 if nota > 3:
     for v in grafoU:  # recomendação
         for A in range(len(grafoU[v]) - 1):
             if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
                 for B in range(len(grafoU[v])):
-                    if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1]:
-                        print(grafoF[grafoU[v][B][0]][1])
+                    if grafoU[v][B][1] > 3.4 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1]:
                         top.append(grafoU[v][B])
-
                 break
-print(f"\nRECOMENDADO:")
-for iae in range(len(top)):
-    print(f"{grafoF[top[iae][0]]}, nota: {top[iae][1]}")
 
-#print(f"Qm viu {assistido} tb gostou: {top[0:10]}")
-
-
-## teste busca de informações
-usuario = int(input("Id do usuário [1 - 612]: "))
-print(f"Informações o usuário: {usuario} - {len(grafoU[usuario])} Filmes vistos. \n['filme',nota]\n{grafoU[usuario]}") #user 611 adicionado como teste ao arquiv
-
-
+top = limpar(top) #remover filmes repitidos
+print(len(top))
+print(f"{len(top)} Filmes RECOMENDADOS PARA: {grafoF[assistido][0]}  * as notas não representam media geral 👍\n")
+for top5 in range(20):
+    if top5 >= len(top):
+        break
+    else:
+        print(f"{grafoF[top[top5][0]]}, nota: {top[top5][1]}")
 
