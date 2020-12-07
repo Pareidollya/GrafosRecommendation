@@ -52,14 +52,14 @@ top = []
 
 print(grafoU[1][0].index(1))
 
-for v in grafoU:  # recomendação
-    for A in range(len(grafoU[v]) - 1):
-        if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
-           for B in range(len(grafoU[v])):
-               if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido:
-                   top.append(grafoU[v][B])
-
-
+if nota > 3:
+    for v in grafoU:  # recomendação
+        for A in range(len(grafoU[v]) - 1):
+            if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
+                for B in range(len(grafoU[v])):
+                    if grafoU[v][B][1] > 3 and grafoU[v][B][0] != assistido:
+                        top.append(grafoU[v][B])
+                break
 print(top)
 
 #print(f"Qm viu {assistido} tb gostou: {top[0:10]}")
