@@ -54,30 +54,35 @@ def limpar(a): #remover filmes repitidos
 grafoU = grafoUser(ratings) #grafo de usuarios
 grafoF = grafoFilmes(filmes) #dicionario (ta como grafo mas dps percebi q nao é)
 
-assistido = int(input("Id do filme: ")) #adicionar busca por nome
-nota = float(input("Nota do filme: "))
-top = []
-for v in grafoU:  # recomendação
-    for A in range(len(grafoU[v]) - 1):
-        if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
-            for B in range(len(grafoU[v])):
-                if grafoU[v][B][1] > 3.4 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1] and nota > 3:
-                    top.append(grafoU[v][B])
-                elif grafoU[v][B][1] > 4 and grafoU[v][B][0] != assistido and grafoF[assistido][1][4:5] in grafoF[grafoU[v][B][0]][1] and nota < 3 and grafoU[v][B][1] > 4: #se nao gostou puxar qq filme de qq genero
-                    top.append(grafoU[v][B])
-            break
+a = 1
+while a != 0:
+    assistido = int(input("Id do filme: "))  # adicionar busca por nome
+    nota = float(input("Nota do filme: "))
 
-top = limpar(top) #remover filmes repitidos
-print(f"Encontrado(s): {len(top)} filmes")
-if nota < 3:
-    print(f"\nRecomendados para: {grafoF[assistido][0]}")
-else:
-    print(f"{len(top)} Filmes RECOMENDADOS PARA: {grafoF[assistido][0]}\n")
+    top = []
+    for v in grafoU:  # recomendação
+        for A in range(len(grafoU[v])):
+            if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
+                for B in range(len(grafoU[v])):
+                    if grafoU[v][B][1] > 3.4 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1] and nota > 3:
+                        top.append(grafoU[v][B])
+                    elif grafoU[v][B][1] > 4 and grafoU[v][B][0] != assistido and grafoF[assistido][1][4:5] in grafoF[grafoU[v][B][0]][1] and nota < 3 and grafoU[v][B][1] > 4:  # se nao gostou puxar qq filme de qq genero
+                        top.append(grafoU[v][B])
+                break
+    top = limpar(top)  # remover filmes repitidos
 
-for top5 in range(20):
-    if top5 >= len(top):
-        break
+    ############################################# aplicação
+    print(f"Encontrado: {len(top)} filmes")
+    if nota < 3:
+        print(f"\nRecomendados para: {grafoF[assistido][0]}")
     else:
-        print(f"{grafoF[top[top5][0]]}, nota: {top[top5][1]}")
+        print(f"{len(top)} Filmes RECOMENDADOS PARA: {grafoF[assistido][0]}\n")
 
-print("* as notas não representam media geral 👍")
+    for top5 in range(20):
+        if top5 >= len(top):
+            break
+        else:
+            print(f"{grafoF[top[top5][0]]}, nota: {top[top5][1]}")
+    print("\n* as notas não representam a media geral dos filmes, a ideia seria retornar a lista ordenada com base na media e gênero 👍\nFilmes vistos: ")
+    a = int(input("0 = stop, 1 = Continuar: "))
+print("xau 👋")
