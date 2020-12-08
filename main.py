@@ -70,7 +70,6 @@ while a != 0:
                         top.append(grafoU[v][B])
                 break
     top = limpar(top)  # remover filmes repitidos
-
     ############################################# aplicação
     print(f"Encontrado: {len(top)} filmes")
     if nota < 3:
@@ -83,6 +82,6 @@ while a != 0:
             break
         else:
             print(f"{grafoF[top[top5][0]]}, nota: {top[top5][1]}")
-    print("\n* as notas não representam a media geral dos filmes, a ideia seria retornar a lista ordenada com base na media e gênero 👍\nFilmes vistos: ")
+    print("\n* as notas não representam a media geral dos filmes, a ideia seria retornar a lista ordenada com base na media e gênero 👍")
     a = int(input("0 = stop, 1 = Continuar: "))
 print("xau 👋")
