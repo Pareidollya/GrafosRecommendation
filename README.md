@@ -17,7 +17,7 @@ Dicionario Filmes para utilizar como informações de saída.
 
 > Inserir sua nota 0 - 5 (por enquanto so funcionar acima de 3);
 
-> O retorno será uma lista de no maximo 20 filmes do mesmo gênero que foram bem avaliados por outros usuários.
+> Caso sua nota seja ( > 3 ), o retorno será uma lista de no maximo 20 filmes do mesmo gênero que foram bem avaliados por outros usuários. Se não, irá retornar filmes que foram bem avaliados no geral.
 
 **Observações:**
 
