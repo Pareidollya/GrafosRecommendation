@@ -57,21 +57,27 @@ grafoF = grafoFilmes(filmes) #dicionario (ta como grafo mas dps percebi q nao é
 assistido = int(input("Id do filme: ")) #adicionar busca por nome
 nota = float(input("Nota do filme: "))
 top = []
-if nota > 3:
-    for v in grafoU:  # recomendação
-        for A in range(len(grafoU[v]) - 1):
-            if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
-                for B in range(len(grafoU[v])):
-                    if grafoU[v][B][1] > 3.4 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1]:
-                        top.append(grafoU[v][B])
-                break
+for v in grafoU:  # recomendação
+    for A in range(len(grafoU[v]) - 1):
+        if assistido in grafoU[v][A] and grafoU[v][A][1] >= 3:  # filme e nota (assistiram e gostaram do filme)
+            for B in range(len(grafoU[v])):
+                if grafoU[v][B][1] > 3.4 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1] and nota > 3:
+                    top.append(grafoU[v][B])
+                elif grafoU[v][B][1] > 4 and grafoU[v][B][0] != assistido and grafoF[assistido][1][5:10] in grafoF[grafoU[v][B][0]][1] and nota < 3: #se nao gostou puxar qq filme de qq genero
+                    top.append(grafoU[v][B])
+            break
 
 top = limpar(top) #remover filmes repitidos
 print(len(top))
-print(f"{len(top)} Filmes RECOMENDADOS PARA: {grafoF[assistido][0]}  * as notas não representam media geral 👍\n")
+if nota < 3:
+    print(f"Encontrado: {len(top)} \nÑ gostou de: {grafoF[assistido][0]}? Qm assistiu tb curtiu:")
+else:
+    print(f"{len(top)} Filmes RECOMENDADOS PARA: {grafoF[assistido][0]}\n")
+
 for top5 in range(20):
     if top5 >= len(top):
         break
     else:
         print(f"{grafoF[top[top5][0]]}, nota: {top[top5][1]}")
 
+print("* as notas não representam media geral 👍")
