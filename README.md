@@ -27,6 +27,8 @@ Dicionario Filmes para utilizar como informações de saída.
 
 • movieId pode ser encontrado em movies.csv (foi adicionado novos filmes afim de testes).
 
-**Teste usado no desenvolvimento:**
+• Todos os testes foram realizados no ambiente do PyCharm
+
+**Teste realizado no desenvolvimento:**
 
 *Foi adicionado 2 novos usuarios em ratings.csv com 3 filmes avaliados por cada, onde um dos filmes foi adicionado em movies.csv com movieId "1111111111" contendo gênero "Adventure". Rodando o algorítimo utilizando o filme "1111111111" como assistido, o algoritmo deve retornar os filmes que esses dois novos usuarios avaliaram com nota acima de 3 e tenham gênero "Adventure", onde, por fim deve retornar "Toy Story" e "Jumanji", filmes avaliados pelos dois que possuem gênero "Aventura".
