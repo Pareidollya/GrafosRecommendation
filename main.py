@@ -63,14 +63,14 @@ for v in grafoU:  # recomendação
             for B in range(len(grafoU[v])):
                 if grafoU[v][B][1] > 3.4 and grafoU[v][B][0] != assistido and grafoF[assistido][1] in grafoF[grafoU[v][B][0]][1] and nota > 3:
                     top.append(grafoU[v][B])
-                elif grafoU[v][B][1] > 4 and grafoU[v][B][0] != assistido and grafoF[assistido][1][5:10] in grafoF[grafoU[v][B][0]][1] and nota < 3: #se nao gostou puxar qq filme de qq genero
+                elif grafoU[v][B][1] > 4 and grafoU[v][B][0] != assistido and grafoF[assistido][1][4:5] in grafoF[grafoU[v][B][0]][1] and nota < 3 and grafoU[v][B][1] > 4: #se nao gostou puxar qq filme de qq genero
                     top.append(grafoU[v][B])
             break
 
 top = limpar(top) #remover filmes repitidos
-print(len(top))
+print(f"Encontrado(s): {len(top)} filmes")
 if nota < 3:
-    print(f"Encontrado: {len(top)} \nÑ gostou de: {grafoF[assistido][0]}? Qm assistiu tb curtiu:")
+    print(f"\nRecomendados para: {grafoF[assistido][0]}")
 else:
     print(f"{len(top)} Filmes RECOMENDADOS PARA: {grafoF[assistido][0]}\n")
 
